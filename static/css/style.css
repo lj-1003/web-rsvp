@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+	background-color: rgb(244, 242, 242);
+}
+
+#logobox {
+	display: flex;
+	height: auto;
+	width: auto;
+	justify-content: center;
+}
+
+.logo {
+	/* height: 300px;
+	width: auto; */
+	height: auto;
+	width: 100%;
+	max-height: 300px;
+	border-radius: 10px;
+}
+
+#homehero img {
+	display: block;
+	margin: 0 auto;
+	height: auto;
+	width: 100%;
+	max-width: 1000px;
+	border-radius: 10px;
+	gap: 2.5%;
+}
+/* NAVIGATION -----------------------*/
+button:hover {
+	transform: scale(1.1);
+	transition: transform .25s ease;
+}
+
+#navigation {
+	background-color: white;
+	font-family: "Libre Baskerville", serif;
+	font-size: 150%;
+	font-weight: bold;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px rgb(206, 206, 206);
+}
+	
+#navigation a {
+	text-decoration: none;
+}
+	
+#navigation ul {
+	display: flex;
+	list-style: none;
+	white-space: nowrap;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	gap: 2.5%;
+}
+
+#navigation a:link {
+	color: #000000;
+}
+
+#navigation a:visited {
+	color: #000000;
+}
+	
+#navigation a:hover {
+	color: #fcee85;
+	transition: color .5s ease-out;
+}
+/* MAIN -----------------------*/
+main {
+	display: flex;
+	justify-content: center;
+	font-family: helvetica;
+}
+/* PHOTO GRID -----------------------*/	
+.photo-gallery {
+	max-width: fit-content;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	column-gap: 10px;
+	row-gap: 10px;
+	margin: 40px;
+}
+
+.grid-photo img {
+	width: 100%;
+    height: auto; 
+	max-height: 600px;
+	border-radius: 10px;
+	}
+
+.grid-photo img:hover {
+	transform: scale(1.1);
+	transition: transform .25s ease;
+}
+/* Q&A Paragraph -----------------------*/	
+.qa-paragraph {
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin: 10px;
+	place-items: center;
+	text-align: center;
+	padding-left: 20%;
+	padding-right: 20%;
+  }
+.qa-section img {
+	width: 70%;
+    height: auto; 
+	}
+
+
+/* Wedding Party Cards -----------------------*/	
+.vip-gallery {
+	max-width: fit-content;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 10px;
+	row-gap: 10px;
+	margin: 40px;
+}
+
+.vip-cards {
+	text-align: center;
+	font-family: "Libre Baskerville", serif;
+}
+
+.card:hover {
+	transform: scale(1.1);
+	transition: transform .25s ease;
+}
+
+.card {
+  /*border: 1px solid rgb(0, 0, 0);*/
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(206, 206, 206);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  max-width: 250px;
+  display: inline-block;
+  background-color: white;
+}
+.card .card-image {
+  max-width: 60%;
+  height: auto;
+  border-radius: 50%; /*This would make the image a circle, but my profile picture is already a circle.*/
+  margin-bottom: 10px;
+}
+
+/* QA -----------------------*/	
+.qa-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.qa-card {
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(206, 206, 206);
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  display: inline-block;
+  background-color: white;
+}
+
+
+/* FOOTER -----------------------*/	
+footer {
+	background-color: #fcee85;
+	color: #000000;
+	font-size: 85%;
+	text-align: center;
+	font-family: arial;
+	padding: 2em 2em 2em 2em;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px rgb(206, 206, 206);
+	}
+	
+footer a:link {
+ color: #000000;
+}
+
+footer a:visited {
+  color: #000000;
+}
+/* SCREEN SIZEZ -----------------------*/	
+/* Desktops */
+@media (min-width: 1025px) {
+	#navigation button {
+		display: none;
+	}
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+	#navigation {
+		display: inline-block;
+		background-color: rgb(244, 242, 242);
+		box-shadow: none;;
+	}
+
+	#navigation button {
+		display: block;
+		background-color: #fcee85;
+		border-style: none;
+		border-radius: 5px;
+		font-size:100%;
+		color: #000000;
+		line-height: 2.0;
+		cursor: pointer;
+		box-shadow: 5px 5px 5px rgb(206, 206, 206);
+	}
+
+	#navigation .content {
+		display: none;
+	}
+
+	#navigation ul {
+		display: flex;
+		flex-direction: column;
+	}
+
+	#navigation a:hover {
+		color: #515151;
+		transition: color .5s ease-out;
+	}
+
+	#navigation:hover .content {
+		display: block;
+	}
+	.photo-gallery {
+	grid-template-columns: repeat(2, 1fr);
+}
+	.vip-gallery {
+	grid-template-columns: repeat(2, 1fr);
+}
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RSVP</title>
+    <link rel="stylesheet" href="../static/css/guestbook_style.css">
+</head>
+<body>
+    <h1>Find your RSVP</h1>
+
+    <div class="fillout">
+        <form method="POST">
+            <label for="content">Enter the unique code from your invitation:</label>
+            <textarea id="idInput" name="idInput" required="required" rows="2" cols="30"></textarea><br>
+
+            <button class="form-buttons" type="button" onclick="getPersonalData()">Submit</button>
+            <button class="form-buttons"type="button" onclick="resetForm()">Reset Form</button>
+        </form>
+    </div>
+
+   <h2 id="rsvpName"></h2>
+   <p id="rsvpPlus"></p>
+
+    <!-- <footer>
+        <p>&copy; 2025 Levi Eck</p>
+    </footer> -->
+
+    <script type="module" src="../js/ui.js"></script>
+</body>
+</html>

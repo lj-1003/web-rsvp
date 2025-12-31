@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+h1 {
+	text-align: center;
+	font-family: "Libre Baskerville", serif;
+}
+
+form {
+	width: 400px;
+	margin: 0 auto;
+	text-align: center;
+}
+label {
+	display: block;
+}
+
+input[type="text"],
+textarea {
+	display: block;
+	margin: 0 auto;
+	width: 80%;
+	font-family: Arial, sans-serif;
+	line-height: 1.5;
+	padding: 10px;
+}
+
+
+.form-buttons{
+	width: 100px;
+	height: 37px;
+	background-color: #fcee85;
+	color: #000000;
+	border: none;
+}
+
+.form-buttons:hover {
+	transform: scale(1.1);
+	transition: transform .25s ease;
+    }
+
+input[type="submit"]:hover {
+	transform: scale(1.1);
+	transition: transform .25s ease;
+}
+
+.fillout {
+	display: flex;
+	justify-content: center;
+}
+
+#feed {
+	text-align: center;
+}
+
+footer {
+	text-align: center;
+}
