@@ -51,8 +51,8 @@ async function getGuestData() {
   guests.forEach(guest => {
 
     const li = document.createElement("li");
-    li.textContent = `ID: ${guest.id}`;
-
+    li.textContent = `ID: ${guest.id} | Primary Guest: ${guest.name1}, ${guest.name1Response}`;
+    
     guestList.appendChild(li);
     
   });
