@@ -74,7 +74,8 @@ async function updateRSVP(id, key, name, responseVar, response) {
 
   try {
     await updateGuest(id, updateData);
-    alert(`${name} is going!`);
+    alert(`${name} is ${response}!`);
+    getPersonalData();
   } catch (err) {
     console.error("Error updating RSVP:", err);
   }
@@ -82,14 +83,14 @@ async function updateRSVP(id, key, name, responseVar, response) {
 
 async function checkResponseYes(id, key, name, responseVar) {
   console.log("User selected yes")
-  const response = "Going";
+  const response = "going";
   updateRSVP(id, key, name, responseVar, response);
 }
 
 // Update RSVP response
 async function checkResponseNo(id, key, name, responseVar) {
   console.log("User selected no")
-  const response = "Not going";
+  const response = "not going";
   updateRSVP(id, key, name, responseVar, response);
 }
 //------------------------------------------------
