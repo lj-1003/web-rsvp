@@ -42,3 +42,13 @@ export async function getGuest() {
     }
     return guests; 
 }
+
+//Update
+export async function updateGuest(id, updateData){
+    try {
+    const rsvpRef = doc(db, "guests", id) 
+    await updateDoc(rsvpRef, updateData)
+    }catch (error) {
+    console.error("error updatating RSVP: ", error);
+    }
+}
