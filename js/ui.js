@@ -6,6 +6,7 @@ function resetForm() {
 import {
   addGuest,
   getGuest,
+  updateGuest,
 } from "../js/firebaseDB.js"
 
 //------------------------------------------------
@@ -61,22 +62,35 @@ getGuestData();
 //------------------------------------------------
 //------------------------------------------------
 //Update RSVP
-async function updateRSVP(id, response) {
-  console.log(response);
-  console.log(id);
-}
+async function updateRSVP(id, key, name, responseVar, response) {
+  console.log(`Guest name: ${name}`);
+  console.log(`Original Response: ${responseVar}`);
+  console.log(`New Response: ${response}`);
+  console.log(`Firebase ID: ${id}`);
 
-async function checkResponseYes(id) {
+  const updateData = {
+    [`${key}Response`]: response
+  };
+
+  try {
+    await updateGuest(id, updateData);
+    alert(`${name} is going!`);
+  } catch (err) {
+    console.error("Error updating RSVP:", err);
+  }
+};
+
+async function checkResponseYes(id, key, name, responseVar) {
   console.log("User selected yes")
-  const response = true;
-  updateRSVP(id, response);
+  const response = "Going";
+  updateRSVP(id, key, name, responseVar, response);
 }
 
 // Update RSVP response
-async function checkResponseNo(id) {
+async function checkResponseNo(id, key, name, responseVar) {
   console.log("User selected no")
-  const response = false;
-  updateRSVP(id, response);
+  const response = "Not going";
+  updateRSVP(id, key, name, responseVar, response);
 }
 //------------------------------------------------
 //------------------------------------------------
@@ -97,27 +111,16 @@ async function getPersonalData() {
       found = true;
 
       const names = [
-        guest.name1,
-        guest.name1Response,
-
-        guest.name2,
-        guest.name2Response,
-
-        guest.name3,
-        guest.name3Response,
-
-        guest.name4,
-        guest.name4Response,
-
-        guest.name5,
-        guest.name5Response,
-
-        guest.name6,
-        guest.name6Response,
+        { key: "name1", name: guest.name1, responseVar: guest.name1Response },
+        { key: "name2", name: guest.name2, responseVar: guest.name2Response },
+        { key: "name3", name: guest.name3, responseVar: guest.name3Response },
+        { key: "name4", name: guest.name4, responseVar: guest.name4Response },
+        { key: "name5", name: guest.name5, responseVar: guest.name5Response },
+        { key: "name6", name: guest.name6, responseVar: guest.name6Response }
       ];
       
-      names.forEach((name, index) => {
-        //lets these varibales work in bigger scope
+      names.forEach(({key, name, responseVar}) => {
+        //lets these variables work in bigger scope
         let li;
         let yesButton;
         let noButton;
@@ -125,14 +128,13 @@ async function getPersonalData() {
         if(name) { //Filters out blank name inputs
           //Creates a list item
           li = document.createElement("li");
-          li.textContent = `${name}`;
+          li.textContent = `${name} (Status: ${responseVar})`;
 
-        if (index % 2 === 1) { //checks if index is odd so buttons are only applied to responses
           //yes button
           yesButton = document.createElement("button");
           yesButton.innerHTML = '<i>RSVP Yes</i>';
           yesButton.addEventListener("click", async () => {
-            await checkResponseYes(guest.id); //triggers update functionality 
+            await checkResponseYes(guest.id, key, name, responseVar); //triggers update functionality 
           })
           li.appendChild(yesButton); //puts button inside li
           
@@ -140,13 +142,9 @@ async function getPersonalData() {
           noButton = document.createElement("button");
           noButton.innerHTML = '<i>RSVP No</i>';
           noButton.addEventListener("click", async () => {
-            await checkResponseNo(guest.id); //triggers update functionality 
+            await checkResponseNo(guest.id, key, name, responseVar); //triggers update functionality 
           })
           li.appendChild(noButton); //puts buttons inside li
-
-        } else {
-          console.log("Are you reading this?");
-        }
           rsvpName.appendChild(li); //buttons now inside li -> goes into ul
         };
       });
@@ -156,7 +154,7 @@ async function getPersonalData() {
 
   //ID found flag 
   if (!found) {
-      rsvpName.textContent = "RSVP not found. Retry code, or contact Levi for support."
+      rsvpName.textContent = "RSVP not found. Check code and retry, or contact Levi for support."
     }
 }
 //------------------------------------------------
