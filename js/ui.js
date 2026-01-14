@@ -74,7 +74,7 @@ async function updateRSVP(id, key, name, responseVar, response) {
 
   try {
     await updateGuest(id, updateData);
-    alert(`${name} is ${response}!`);
+    alert(`You've indicated that ${name} is ${response}! You can change your answer until 11:59pm on June 18.`);
     getPersonalData();
   } catch (err) {
     console.error("Error updating RSVP:", err);
@@ -129,10 +129,11 @@ async function getPersonalData() {
         if(name) { //Filters out blank name inputs
           //Creates a list item
           li = document.createElement("li");
-          li.textContent = `${name} (Status: ${responseVar})`;
+          li.innerHTML = `${name} (Status: ${responseVar})<br>`;
 
           //yes button
           yesButton = document.createElement("button");
+          yesButton.classList.add("yes-btn");
           yesButton.innerHTML = '<i>RSVP Yes</i>';
           yesButton.addEventListener("click", async () => {
             await checkResponseYes(guest.id, key, name, responseVar); //triggers update functionality 
@@ -141,6 +142,7 @@ async function getPersonalData() {
           
           //no button
           noButton = document.createElement("button");
+          noButton.classList.add("no-btn");
           noButton.innerHTML = '<i>RSVP No</i>';
           noButton.addEventListener("click", async () => {
             await checkResponseNo(guest.id, key, name, responseVar); //triggers update functionality 

@@ -9,6 +9,7 @@
 <body>
     <p>levieck web rsvp tool | beta-1</p>
 
+    <div id="container">
     <h1>Let's find your RSVP!</h1>
 
     <div class="fillout">
@@ -17,14 +18,16 @@
             <textarea id="idInput" name="idInput" required="required" rows="2" cols="30"></textarea><br>
             <button class="form-buttons" type="button" onclick="getPersonalData()">Submit</button>
             <button class="form-buttons"type="button" onclick="resetForm()">Reset Form</button>
-            <label for="content">Email questions and code resend requests to <a href="mailto:support@levieck.com">support@levieck.com</a></label>
         </form>
     </div>
 
     <ul id="rsvpName"></ul>
+    </div>
+
+    <p>Email questions and code resend requests to <a href="mailto:support@levieck.com">support@levieck.com</a></p>
 
     <!-- <footer>
-        <p>&copy; 2025 Levi Eck</p>
+        <p>&copy; 2026 Levi Eck</p>
     </footer> -->
 
     <script type="module" src="../js/ui.js"></script>
