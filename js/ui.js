@@ -162,6 +162,18 @@ async function getPersonalData() {
 }
 //------------------------------------------------
 
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
+
+if (code) {
+  document.getElementById("idInput").value = code;
+}
+
+
+
+
+
+
 window.resetForm = resetForm;
 window.createGuest = createGuest;
 window.getPersonalData = getPersonalData;
