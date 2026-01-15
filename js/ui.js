@@ -43,20 +43,43 @@ async function createGuest() {
 //------------------------------------------------
 //------------------------------------------------
 // Load full guest list for admin page
+let yesCount = 0;
 async function getGuestData() {
-  const guests = await getGuest();
+  const guests = await getGuest(); //pulls guests from Firebase.
 
+  const bigNumber = document.getElementById("the-big-number");
   const guestList = document.getElementById("guest-list");
   guestList.innerHTML = ""; // Clears previous items
 
   guests.forEach(guest => {
 
+    //Handles counting of yes responses. Yes this is prolly a terrible way to write this. 
+    if (guest.name1Response === "going") {
+      yesCount = yesCount + 1;
+    }
+    if (guest.name2Response === "going") {
+      yesCount = yesCount + 1;
+    }
+    if (guest.name3Response === "going") {
+      yesCount = yesCount + 1;
+    }
+    if (guest.name4Response === "going") {
+      yesCount = yesCount + 1;
+    }
+    if (guest.name5Response === "going") {
+      yesCount = yesCount + 1;
+    }
+    if (guest.name6Response === "going") {
+      yesCount = yesCount + 1;
+    }
+
     const li = document.createElement("li");
     li.textContent = `ID: ${guest.id} | Primary Guest: ${guest.name1}, ${guest.name1Response}`;
     
     guestList.appendChild(li);
-    
   });
+  console.log(yesCount);
+  bigNumber.innerHTML = `Guests attending: ${yesCount}`;
 }
 getGuestData();
 //------------------------------------------------
